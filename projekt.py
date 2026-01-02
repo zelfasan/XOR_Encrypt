@@ -1,7 +1,6 @@
 import argparse
 from pathlib import Path
 import sys
-from isHex import isHex
 import base64
 
 # Calls other functions in order to perform the XOR encryption
@@ -91,3 +90,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
