@@ -16,11 +16,14 @@ python projekt.py xor
 
 **Example Commands**
 
-xor --in "infile.bin" --out "outfile.bin" --key "4243"xor --in "infile.bin" --out "outfile.py" --key "0x4243"xor --in "infile.bin" --out "outfile.c" --key "0x42 0x43"
+xor --in "infile.bin" --out "outfile.bin" --key "4243"
+xor --in "infile.bin" --out "outfile.py" --key "0x4243"
+xor --in "infile.bin" --out "outfile.c" --key "0x42 0x43"
 
 **Example Outputs**
 
 • **.bin**: vtzqv  
 • **.py**: data = \[118, 116, 122, 113, 118\]  
 • **.c**: unsigned char data\[\] = { 118, 116, 122, 113, 118 };
+
 
