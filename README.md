@@ -10,7 +10,9 @@ python projekt.py xor
 
 **Arguments**
 
-• **\--in**: The path to the input file.• **\--out**: The desired path to the output file.Note: The file will be overwritten if it already exists.• **\--key**: Hex key (1 or more bytes).
+• **\--in**: The path to the input file.  
+• **\--out**: The desired path to the output file.Note: The file will be overwritten if it already exists.  
+• **\--key**: Hex key (1 or more bytes).
 
 **Example Commands**
 
@@ -18,4 +20,7 @@ xor --in "infile.bin" --out "outfile.bin" --key "4243"xor --in "infile.bin" --ou
 
 **Example Outputs**
 
-• **.bin**: vtzqv• **.py**: data = \[118, 116, 122, 113, 118\]• **.c**: unsigned char data\[\] = { 118, 116, 122, 113, 118 };
+• **.bin**: vtzqv  
+• **.py**: data = \[118, 116, 122, 113, 118\]  
+• **.c**: unsigned char data\[\] = { 118, 116, 122, 113, 118 };
+
