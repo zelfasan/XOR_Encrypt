@@ -1,7 +1,6 @@
 import argparse
 from pathlib import Path
 import sys
-import base64
 
 # Calls other functions in order to perform the XOR encryption
 def cmd_xor(args: argparse.Namespace):
@@ -28,24 +27,26 @@ def build_parser() -> argparse.ArgumentParser:
 
     return p
 
+
 # Prepares encrypted file content according to desired output
-def format_output(encrypted: bytes, out: str) -> bytes:
+def format_output(encrypted: bytes, out: str) -> bytes | str:
     out = out.lower()
     if out.endswith("bin"):
-        return encrypted
+        return to_bin_hex(encrypted)            
     if out.endswith("py"):
         return to_python_array(encrypted)
     if out.endswith("c"):
         return to_c_array(encrypted)
     raise ValueError("Output format must be one of: raw, py, c")
 
-# If desired output is .py
-def to_python_array(data: bytes) -> str:
-    return f"data = [{', '.join(str(b) for b in data)}]"
+def to_bin_hex(data: bytes) -> bytes:
+    return b"".join(f"0x{b:02x} ".encode() for b in data)
 
-# If desired output is .c
+def to_python_array(data: bytes) -> str:
+    return "data = [" + ", ".join(f"0x{b:02x}" for b in data) + "]"
+
 def to_c_array(data: bytes, var_name="data") -> str:
-    return f"unsigned char {var_name}[] = {{ {', '.join(str(b) for b in data)} }};"
+    return f"unsigned char {var_name}[] = {{ " + ", ".join(f"0x{b:02x}" for b in data) + " };"
 
 # Validates input file
 def ensure_bin_file(path_str: str) -> Path:
@@ -90,4 +91,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
